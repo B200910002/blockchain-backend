@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <title>Add Course</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2><%=title %></h2>
+      <form action="/course/addCourse" method="post">
+        <div class="form-group">
+          <label for="email">Гариг</label>
+          <input
+            type="text"
+            class="form-control"
+            id="daysOfWeek"
+            placeholder="Enter daysOfWeek"
+            name="daysOfWeek"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="classTime">Цаг</label>
+          <input
+            type="number"
+            class="form-control"
+            id="classTime"
+            placeholder="Enter classTime"
+            name="classTime"
+          />
+        </div>
+        <div class="form-group">
+          <label for="courseCode">Хич.код</label>
+          <input
+            type="text"
+            class="form-control"
+            id="courseCode"
+            placeholder="Enter courseCode"
+            name="courseCode"
+          />
+        </div>
+        <div class="form-group">
+          <label for="courseName">Хич.нэр</label>
+          <input
+            type="text"
+            class="form-control"
+            id="courseName"
+            placeholder="Enter courseName"
+            name="courseName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="courseType">Хич.хэлбэр</label>
+          <input
+            type="text"
+            class="form-control"
+            id="courseType"
+            placeholder="Enter courseType"
+            name="courseType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="classNumber">Анги</label>
+          <input
+            type="text"
+            class="form-control"
+            id="classNumber"
+            placeholder="Enter classNumber"
+            name="classNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="teacherCode">Багш.код</label>
+          <input
+            type="text"
+            class="form-control"
+            id="teacherCode"
+            placeholder="Enter teacherCode"
+            name="teacherCode"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="teacherName">Багш.нэр</label>
+          <input
+            type="text"
+            class="form-control"
+            id="teacherName"
+            placeholder="Enter teacherName"
+            name="teacherName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Тайлбар</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            placeholder="Enter description"
+            name="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="teachType">Орох хэлбэр</label>
+          <input
+            type="text"
+            class="form-control"
+            id="teachType"
+            placeholder="Enter teachType"
+            name="teachType"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
