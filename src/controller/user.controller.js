@@ -1,8 +1,3 @@
-const SHA256 = require("crypto-js/sha256");
-const EC = require("elliptic").ec;
-const ec = new EC("secp256k1");
-
-const { coin } = require('./blockchain.controller')
 
 //protect function
 exports.protect = async (req, res, next) => {
@@ -19,7 +14,6 @@ exports.protect = async (req, res, next) => {
 exports.setCookie = async (req, res, next) => {
   try {
     const { username } = req.body;
-
     res.cookie('username', username, { maxAge: 900000, httpOnly: true });
     res.send('Cookie has been set');
   } catch (err) {
