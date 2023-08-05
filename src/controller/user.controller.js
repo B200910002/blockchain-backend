@@ -7,7 +7,7 @@ exports.protect = async (req, res, next) => {
     }
     next();
   } catch (err) {
-    res.status(201).json(err.message);
+    res.status(400).json(err.message);
   }
 };
 
