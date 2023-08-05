@@ -57,7 +57,7 @@ class Block {
         JSON.stringify(this.transactions) +
         this.previosHash +
         this.nonce
-    ).toString();
+    ).toString();wallet
   }
 
   mineBlock(difficulty) {
@@ -150,6 +150,11 @@ class BlockChain {
       throw new Error("Not enough balance");
     }
 
+    const walletBalanceOfPendingTransactions = this.getBalanceOfPendingTransactions(transaction.fromAddress, this.pendingTransactions);
+    if (walletBalanceOfPendingTransactions < transaction.amount) {
+      throw new Error("Not enough balance");
+    }
+
     this.pendingTransactions.push(transaction);
     // this.miningReward = this.calcPercent();
   }
@@ -168,6 +173,7 @@ class BlockChain {
         }
       }
     }
+
     return balance;
   }
 
@@ -197,6 +203,18 @@ class BlockChain {
       result = result + trans.amount * 0.0000001;
     }
     return result;
+  }
+
+  getBalanceOfPendingTransactions(address, transactions){
+    let balance = this.getBalanceOfAddress(address);
+
+    for(const trans of transactions) {
+      if(trans.fromAddress == address) {
+        balance -= trans.amount;
+      }
+    }
+
+    return balance;
   }
 }
 
