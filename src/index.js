@@ -8,7 +8,6 @@ const logger = require("morgan");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
-//routes
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const blockchainRoute = require("./routes/blockchain.route");
@@ -17,16 +16,19 @@ const blockchainRoute = require("./routes/blockchain.route");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-//uses
+// server engine setup
 app.use(logger("[:date[iso]] :method :url :status - :response-time ms"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_HOST,
+  credentials: true,
+}));
 
-//use api
+//routes
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/api/v1/blockchain", blockchainRoute);
