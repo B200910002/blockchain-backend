@@ -14,7 +14,7 @@ exports.protect = async (req, res, next) => {
 exports.setCookie = async (req, res, next) => {
   try {
     const { username } = req.body;
-    res.cookie('username', username, { maxAge: 900000, httpOnly: true });
+    res.cookie('username', username, { maxAge: 900000 });
     res.send('Cookie has been set');
   } catch (err) {
     res.status(400).json(err.message);

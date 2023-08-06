@@ -13,11 +13,9 @@ exports.coin = coin
 
 exports.initialize = async (req, res, next) => {
   try {
-    console.log("cookie:", req.cookies.username);
     res.status(200).json(coin);
   } catch (err) {
-    // next(err);
-    res.status(201).json(err.message);
+    res.status(400).json(err.message);
   }
 };
 
@@ -25,8 +23,7 @@ exports.getAllBlocks = async (req, res, next) => {
   try {
     res.status(200).json(coin.chain);
   } catch (err) {
-    // next(err);
-    res.status(201).json(err.message);
+    res.status(400).json(err.message);
   }
 };
 
@@ -65,7 +62,7 @@ exports.createNewBlock = async (req, res, next) => {
     res.status(200).json("block mine successfully!");
   } catch (err) {
     // next(err);
-    res.status(201).json(err.message);
+    res.status(400).json(err.message);
   }
 };
 
@@ -74,7 +71,7 @@ exports.transactionIsValid = async (req, res, next) => {
     if (coin.chain) res.status(200).json(1);
     else res.status(200).json(0);
   } catch (err) {
-    next(err);
+    res.status(400).json(err.message);
   }
 };
 
@@ -83,7 +80,7 @@ exports.blockchainIsValid = async (req, res, next) => {
     if (coin.isChainValid) res.status(200).json(1);
     else res.status(200).json(0);
   } catch (err) {
-    next(err);
+    res.status(400).json(err.message);
   }
 };
 
@@ -99,7 +96,7 @@ exports.getBalanceOfAddress = async (req, res, next) => {
 
     res.status(200).json(balance);
   } catch (err) {
-    next(err);
+    res.status(400).json(err.message);
   }
 };
 
@@ -109,6 +106,6 @@ exports.deleteAll = async (req, res, next) => {
     coin.minePendingTransactions(myWallet);
     res.status(200).json("block chain all deleted!");
   } catch (err) {
-    next(err);
+    res.status(400).json(err.message);
   }
 };
