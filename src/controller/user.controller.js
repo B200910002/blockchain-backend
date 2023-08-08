@@ -10,11 +10,11 @@ exports.protect = async (req, res, next) => {
     res.status(400).json(err.message);
   }
 };
-
+// httpOnly: true, path: "/", sameSite: 'none', secure: true 
 exports.setCookie = async (req, res, next) => {
   try {
     const { username } = req.body;
-    res.cookie('username', username, { maxAge: 900000, httpsOnly: true , path: "/", sameSite: 'none', secure: true });
+    res.cookie('username', username, { maxAge: 900000 });
     res.send('Cookie has been set');
   } catch (err) {
     res.status(400).json(err.message);
