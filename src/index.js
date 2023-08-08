@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
 
-const whitelist = ['http://localhost:3000', 'https://b200910002.github.io', 'https://test-c2dk.onrender.com/', ''];
+const whitelist = ['http://localhost:3000', 'https://b200910002.github.io', 'https://test-c2dk.onrender.com'];
 app.use(cors({
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
