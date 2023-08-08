@@ -23,8 +23,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
+
+const whitelist = ['http://localhost:3000', 'https://b200910002.github.io', 'https://test-c2dk.onrender.com/', ''];
 app.use(cors({
-  origin: process.env.LOCAL_CORS_HOST,
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
