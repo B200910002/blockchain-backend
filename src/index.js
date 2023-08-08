@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
 app.use(cors({
-  origin: process.env.CORS_HOST || process.env.LOCAL_CORS_HOST,
+  origin: process.env.LOCAL_CORS_HOST,
   credentials: true,
 }));
 
